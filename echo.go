@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/types/descriptorpb"
@@ -62,13 +63,17 @@ func genService(gen *protogen.Plugin, file *protogen.File, g *protogen.Generated
 		if method.Desc.IsStreamingClient() || method.Desc.IsStreamingServer() {
 			continue
 		}
+		comment := method.Comments.Leading.String() + method.Comments.Trailing.String()
+		if comment != "" {
+			comment = "// " + method.GoName + strings.TrimPrefix(strings.TrimSuffix(comment, "\n"), "//")
+		}
 		sd.Methods = append(sd.Methods, &methodDesc{
 			Name:         method.GoName,
 			OriginalName: "",
 			Num:          0,
 			Request:      "",
 			Reply:        "",
-			Comment:      method.Comments.Leading.String(),
+			Comment:      comment,
 			Path:         "",
 			Method:       "",
 			HasVars:      false,

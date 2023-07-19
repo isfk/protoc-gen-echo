@@ -2,10 +2,10 @@
 {{$svrName := .ServiceName}}
 
 
-type {{.ServiceType}}EchoServer interface {
+type {{.ServiceType}}EchoHandler interface {
 {{- range .Methods}}
 	{{- if ne .Comment ""}}
-	{{.Comment}}
+		{{.Comment}}
 	{{- end}}
 	{{.Name}}(v4.Context) error
 {{- end}}

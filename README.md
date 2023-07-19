@@ -1,5 +1,7 @@
 # isfk/protoc-gen-echo
 
+生成 `echo` `interface`
+
 ## 安装
 
 ```sh
