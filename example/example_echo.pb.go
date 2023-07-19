@@ -18,3 +18,21 @@ type ExampleServiceEchoHandler interface {
 	// Say say
 	Say(v4.Context) error
 }
+
+// ExampleService_HelloBinder
+func ExampleService_HelloBinder(c v4.Context) (*HelloRequest, error) {
+	var args *HelloRequest
+	if err := c.Bind(&args); err != nil {
+		return &HelloRequest{}, err
+	}
+	return args, nil
+}
+
+// ExampleService_SayBinder
+func ExampleService_SayBinder(c v4.Context) (*SayRequest, error) {
+	var args *SayRequest
+	if err := c.Bind(&args); err != nil {
+		return &SayRequest{}, err
+	}
+	return args, nil
+}

@@ -69,10 +69,10 @@ func genService(gen *protogen.Plugin, file *protogen.File, g *protogen.Generated
 		}
 		sd.Methods = append(sd.Methods, &methodDesc{
 			Name:         method.GoName,
-			OriginalName: "",
+			OriginalName: string(method.Desc.Name()),
 			Num:          0,
-			Request:      "",
-			Reply:        "",
+			Request:      g.QualifiedGoIdent(method.Input.GoIdent),
+			Reply:        g.QualifiedGoIdent(method.Output.GoIdent),
 			Comment:      comment,
 			Path:         "",
 			Method:       "",

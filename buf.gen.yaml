@@ -1,0 +1,19 @@
+version: v1
+managed:
+  enabled: true
+plugins:
+  - plugin: buf.build/protocolbuffers/go:v1.31.0
+    out: example
+    opt: paths=source_relative
+
+  - plugin: buf.build/grpc/go:v1.3.0
+    out: example
+    opt: paths=source_relative,require_unimplemented_servers=false
+
+  - plugin: buf.build/bufbuild/validate-go:v1.0.2
+    out: example
+    opt: paths=source_relative
+
+  - plugin: echo
+    out: example
+    opt: paths=source_relative
