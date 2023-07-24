@@ -1,6 +1,7 @@
 version: v1
 deps:
   - buf.build/bufbuild/protovalidate
+  - buf.build/isfk/prototagger
 breaking:
   use:
     - FILE

@@ -9,6 +9,7 @@ import (
 )
 
 const (
+	httpPackage        = protogen.GoImportPath("net/http")
 	echoPackage        = protogen.GoImportPath("github.com/labstack/echo/v4")
 	deprecationComment = "// Deprecated: Do not use."
 )
@@ -41,6 +42,7 @@ func generateFileContent(gen *protogen.Plugin, file *protogen.File, g *protogen.
 	}
 
 	g.P("var _ = new(", echoPackage.Ident("Context"), ")")
+	g.P("var _ = new(", httpPackage.Ident("Client"), ")")
 
 	for _, service := range file.Services {
 		genService(gen, file, g, service)

@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/labstack/echo/v4 v4.11.1
+	github.com/srikrsna/protoc-gen-gotag v0.6.2
 	google.golang.org/grpc v1.56.2
 	google.golang.org/protobuf v1.31.0
 )
