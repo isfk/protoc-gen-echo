@@ -25,8 +25,6 @@
 //     return &example.HelloResponse{Msg: args.Name}, nil
 // }
 
-
-
 type {{$svrType}}_EchoServerHandler interface {
 {{- range .Methods}}
 	{{- if ne .Comment ""}}
@@ -74,6 +72,8 @@ type {{$svrType}}_EchoClientHandler interface {
 {{- end}}
 }
 
+// 下面方法仅供参考, 具体需要自己实现
+
 type {{$svrType}}_EchoClientHandlerImpl struct {
 }
 
@@ -83,7 +83,7 @@ func New{{$svrType}}_EchoClientHandler() {{$svrType}}_EchoClientHandler {
 
 {{- range .Methods}}
 {{- if ne .Comment ""}}
-{{.Comment}} 方法需要自己实现
+{{.Comment}}
 {{- end}}
 func ({{$svrType}}_EchoClientHandlerImpl) {{.Name}}(args *{{.Request}}) (*{{.Reply}}, error) {
 	return &{{.Reply}}{}, nil
