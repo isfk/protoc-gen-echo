@@ -6,10 +6,14 @@
 go install github.com/isfk/protoc-gen-echo@latest
 ```
 
-## `example` 生成
+## 生成
 
 ```sh
-buf generate example; buf generate example --template=buf.gen.tag.yaml
+protoc --go_out=. --go_opt=paths=source_relative \
+    --echo_out=. --echo_opt=paths=source_relative \
+    demo/demo.proto
+
+# buf generate example; buf generate example --template=buf.gen.tag.yaml
 ```
 
 ## 测试代码
