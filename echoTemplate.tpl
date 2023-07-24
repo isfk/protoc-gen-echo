@@ -3,11 +3,11 @@
 
 // type myHandler {
 //     {{$svrType}}_EchoClientHandlerImpl
-//	   log *slog.Logger	
+//	   Log *slog.Logger	
 // }
 // 
 // func NewMyHandler(log *slog.Logger) *myHandler {
-// 	   return &myHandler{log: log}
+// 	   return &myHandler{Log: log}
 // }
 // 
 // func main () {
@@ -21,7 +21,7 @@
 // }
 // 
 // func (h myHandler) Hello(args *example.HelloRequest) (*example.HelloResponse, error) {
-//     h.log.Info("打印参数", slog.Any("args", args))
+//     h.Log.Info("打印参数", slog.Any("args", args))
 //     return &example.HelloResponse{Msg: args.Name}, nil
 // }
 
@@ -37,12 +37,12 @@ type {{$svrType}}_EchoServerHandler interface {
 }
 
 type {{$svrType}}_EchoServerHandlerImpl struct {
-	handler {{$svrType}}_EchoClientHandler
+	Handler {{$svrType}}_EchoClientHandler
 }
 
 func New{{$svrType}}_EchoServerHandler(handler {{$svrType}}_EchoClientHandler) {{$svrType}}_EchoServerHandler {
 	return &{{$svrType}}_EchoServerHandlerImpl{
-		handler: handler,
+		Handler: handler,
 	}
 }
 
@@ -56,7 +56,7 @@ func (s {{$svrType}}_EchoServerHandlerImpl) {{.Name}}(c v4.Context) error {
 		return err
 	}
 
-	resp, err := s.handler.{{.Name}}(&args)
+	resp, err := s.Handler.{{.Name}}(&args)
 	if err != nil {
 		return err
 	}
