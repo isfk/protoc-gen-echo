@@ -1,4 +1,4 @@
-module git.isfk.cn/isfk/protoc-gen-echo
+module github.com/isfk/protoc-gen-echo
 
 go 1.20
 

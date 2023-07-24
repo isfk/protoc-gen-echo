@@ -3,7 +3,7 @@
 ## 安装
 
 ```sh
-go install git.isfk.cn/isfk/protoc-gen-echo@latest
+go install github.com/isfk/protoc-gen-echo@latest
 ```
 
 ## `example` 生成
@@ -20,7 +20,7 @@ package main
 import (
 	"os"
 
-	"git.isfk.cn/isfk/protoc-gen-echo/example"
+	"github.com/isfk/protoc-gen-echo/example"
 	"github.com/labstack/echo/v4"
 	"golang.org/x/exp/slog"
 )
@@ -57,7 +57,7 @@ func (h myHandler) Say(args *example.SayRequest) (*example.SayResponse, error) {
 }
 ```
 
-https://git.isfk.cn/isfk/protoc-gen-echo-test
+https://github.com/isfk/protoc-gen-echo-test
 
 ## 调试
 
