@@ -9,7 +9,21 @@ option go_package = "github.com/isfk/protoc-gen-echo/example;example";
 service ExampleService {
   // hello
   rpc Hello(HelloRequest) returns (HelloResponse);
-  // say
+
+  // Say godoc
+  // @Summary Say
+  // @Description say some thing
+  // @Tags      say
+  // @Accept    json
+  // @Produce   json
+  // @Param     args  SayRequest
+  // @Success   200   {array}   SayResponse
+  // @Failure   400   {object}  httputil.HTTPError
+  // @Failure   404   {object}  httputil.HTTPError
+  // @Failure   500   {object}  httputil.HTTPError
+  // @Router    /say  [get]
+
+  // 说话说话
   rpc Say(SayRequest) returns (SayResponse);
 }
 

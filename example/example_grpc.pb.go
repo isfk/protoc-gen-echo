@@ -29,7 +29,7 @@ const (
 type ExampleServiceClient interface {
 	// hello
 	Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error)
-	// say
+	// 说话说话
 	Say(ctx context.Context, in *SayRequest, opts ...grpc.CallOption) (*SayResponse, error)
 }
 
@@ -65,7 +65,7 @@ func (c *exampleServiceClient) Say(ctx context.Context, in *SayRequest, opts ...
 type ExampleServiceServer interface {
 	// hello
 	Hello(context.Context, *HelloRequest) (*HelloResponse, error)
-	// say
+	// 说话说话
 	Say(context.Context, *SayRequest) (*SayResponse, error)
 }
 

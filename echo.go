@@ -69,6 +69,12 @@ func genService(gen *protogen.Plugin, file *protogen.File, g *protogen.Generated
 		if comment != "" {
 			comment = "// " + method.GoName + strings.TrimPrefix(strings.TrimSuffix(comment, "\n"), "//")
 		}
+
+		comments := []string{}
+		for _, v := range method.Comments.LeadingDetached {
+			comments = append(comments, v.String())
+		}
+
 		sd.Methods = append(sd.Methods, &methodDesc{
 			Name:         method.GoName,
 			OriginalName: string(method.Desc.Name()),
@@ -82,6 +88,7 @@ func genService(gen *protogen.Plugin, file *protogen.File, g *protogen.Generated
 			HasBody:      false,
 			Body:         "",
 			ResponseBody: "",
+			Swag:         strings.TrimSuffix(strings.Join(comments, "\n"), "\n"),
 		})
 	}
 

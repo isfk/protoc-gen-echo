@@ -13,7 +13,7 @@ protoc --go_out=. --go_opt=paths=source_relative \
     --echo_out=. --echo_opt=paths=source_relative \
     demo/demo.proto
 
-# buf generate example; buf generate example --template=buf.gen.tag.yaml
+# go build .; cp protoc-gen-echo ~/Projects/bin; buf generate example; buf generate example --template=buf.gen.tag.yaml
 ```
 
 ## 测试代码

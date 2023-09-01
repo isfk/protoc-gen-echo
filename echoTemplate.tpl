@@ -48,6 +48,7 @@ func New{{$svrType}}_EchoServerHandler(handler {{$svrType}}_EchoClientHandler) {
 {{- if ne .Comment ""}}
 {{.Comment}}
 {{- end}}
+{{ .Swag }}
 func (s {{$svrType}}_EchoServerHandlerImpl) {{.Name}}(c v4.Context) error {
 	var args {{.Request}}
 	if err := c.Bind(&args); err != nil {
