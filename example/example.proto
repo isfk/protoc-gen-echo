@@ -10,6 +10,7 @@ service ExampleService {
   // hello
   rpc Hello(HelloRequest) returns (HelloResponse);
 
+  // Say ......
   // Say godoc
   // @Summary Say
   // @Description say some thing
@@ -22,8 +23,6 @@ service ExampleService {
   // @Failure   404   {object}  httputil.HTTPError
   // @Failure   500   {object}  httputil.HTTPError
   // @Router    /say  [get]
-
-  // 说话说话
   rpc Say(SayRequest) returns (SayResponse);
 }
 

@@ -29,7 +29,19 @@ const (
 type ExampleServiceClient interface {
 	// hello
 	Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error)
-	// 说话说话
+	// Say ......
+	// Say godoc
+	// @Summary Say
+	// @Description say some thing
+	// @Tags      say
+	// @Accept    json
+	// @Produce   json
+	// @Param     args  SayRequest
+	// @Success   200   {array}   SayResponse
+	// @Failure   400   {object}  httputil.HTTPError
+	// @Failure   404   {object}  httputil.HTTPError
+	// @Failure   500   {object}  httputil.HTTPError
+	// @Router    /say  [get]
 	Say(ctx context.Context, in *SayRequest, opts ...grpc.CallOption) (*SayResponse, error)
 }
 
@@ -65,7 +77,19 @@ func (c *exampleServiceClient) Say(ctx context.Context, in *SayRequest, opts ...
 type ExampleServiceServer interface {
 	// hello
 	Hello(context.Context, *HelloRequest) (*HelloResponse, error)
-	// 说话说话
+	// Say ......
+	// Say godoc
+	// @Summary Say
+	// @Description say some thing
+	// @Tags      say
+	// @Accept    json
+	// @Produce   json
+	// @Param     args  SayRequest
+	// @Success   200   {array}   SayResponse
+	// @Failure   400   {object}  httputil.HTTPError
+	// @Failure   404   {object}  httputil.HTTPError
+	// @Failure   500   {object}  httputil.HTTPError
+	// @Router    /say  [get]
 	Say(context.Context, *SayRequest) (*SayResponse, error)
 }
 

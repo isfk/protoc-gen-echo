@@ -39,9 +39,9 @@ var _ = new(http.Client)
 // }
 
 type ExampleService_EchoServerHandler interface {
-	// Hello hello
+	// Hello
 	Hello(v4.Context) error
-	// Say 说话说话
+	// Say
 	Say(v4.Context) error
 }
 
@@ -55,8 +55,8 @@ func NewExampleService_EchoServerHandler(handler ExampleService_EchoClientHandle
 	}
 }
 
-// Hello hello
-
+// Hello
+// hello
 func (s ExampleService_EchoServerHandlerImpl) Hello(c v4.Context) error {
 	var args HelloRequest
 	if err := c.Bind(&args); err != nil {
@@ -71,7 +71,8 @@ func (s ExampleService_EchoServerHandlerImpl) Hello(c v4.Context) error {
 	return c.JSON(http.StatusOK, resp)
 }
 
-// Say 说话说话
+// Say
+// Say ......
 // Say godoc
 // @Summary Say
 // @Description say some thing
@@ -99,9 +100,9 @@ func (s ExampleService_EchoServerHandlerImpl) Say(c v4.Context) error {
 }
 
 type ExampleService_EchoClientHandler interface {
-	// Hello hello
+	// Hello
 	Hello(*HelloRequest) (*HelloResponse, error)
-	// Say 说话说话
+	// Say
 	Say(*SayRequest) (*SayResponse, error)
 }
 
@@ -114,12 +115,12 @@ func NewExampleService_EchoClientHandler() ExampleService_EchoClientHandler {
 	return &ExampleService_EchoClientHandlerImpl{}
 }
 
-// Hello hello
+// Hello
 func (ExampleService_EchoClientHandlerImpl) Hello(args *HelloRequest) (*HelloResponse, error) {
 	return &HelloResponse{}, nil
 }
 
-// Say 说话说话
+// Say
 func (ExampleService_EchoClientHandlerImpl) Say(args *SayRequest) (*SayResponse, error) {
 	return &SayResponse{}, nil
 }

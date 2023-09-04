@@ -65,15 +65,6 @@ func genService(gen *protogen.Plugin, file *protogen.File, g *protogen.Generated
 		if method.Desc.IsStreamingClient() || method.Desc.IsStreamingServer() {
 			continue
 		}
-		comment := method.Comments.Leading.String() + method.Comments.Trailing.String()
-		if comment != "" {
-			comment = "// " + method.GoName + strings.TrimPrefix(strings.TrimSuffix(comment, "\n"), "//")
-		}
-
-		comments := []string{}
-		for _, v := range method.Comments.LeadingDetached {
-			comments = append(comments, v.String())
-		}
 
 		sd.Methods = append(sd.Methods, &methodDesc{
 			Name:         method.GoName,
@@ -81,14 +72,14 @@ func genService(gen *protogen.Plugin, file *protogen.File, g *protogen.Generated
 			Num:          0,
 			Request:      g.QualifiedGoIdent(method.Input.GoIdent),
 			Reply:        g.QualifiedGoIdent(method.Output.GoIdent),
-			Comment:      comment,
+			Comment:      "// " + method.GoName,
 			Path:         "",
 			Method:       "",
 			HasVars:      false,
 			HasBody:      false,
 			Body:         "",
 			ResponseBody: "",
-			Swag:         strings.TrimSuffix(strings.Join(comments, "\n"), "\n"),
+			Swag:         strings.TrimSuffix(method.Comments.Leading.String(), "\n"),
 		})
 	}
 
